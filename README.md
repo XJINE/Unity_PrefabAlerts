@@ -16,3 +16,4 @@ https://github.com/XJINE/Unity_PrefabAlerts.git?path=Assets/Packages/PrefabAlert
 
 ## How to Use
 
+You can change the highlight color from ``Custom > Prefab Alerts``.

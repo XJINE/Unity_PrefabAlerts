@@ -505,10 +505,6 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4686058959577614409, guid: eb83196583de60246a4d731bac8b7a13, type: 3}
-      propertyPath: 'sampleList.Array.data[0]'
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4686058959577614409, guid: eb83196583de60246a4d731bac8b7a13, type: 3}
       propertyPath: 'sampleList.Array.data[1]'
       value: 2
       objectReference: {fileID: 0}
