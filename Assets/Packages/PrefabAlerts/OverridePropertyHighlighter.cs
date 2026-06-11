@@ -80,6 +80,67 @@ public static class OverridePropertyHighlighter
                 field.AddToClassList(ColoredMarker);
             }
         }
+
+        HighlightAddedListElements(root);
+    }
+
+    private static void HighlightAddedListElements(VisualElement root)
+    {
+        foreach (var gameObject in Selection.gameObjects)
+        {
+            if (!PrefabUtility.IsPartOfPrefabInstance(gameObject))
+            {
+                continue;
+            }
+
+            var modifications = PrefabUtility.GetPropertyModifications(gameObject);
+
+            if (modifications == null)
+            {
+                continue;
+            }
+
+            foreach (var modification in modifications.Where(modification => modification.target != null
+                                                                          && modification.propertyPath.EndsWith(".Array.size")))
+            {
+                var arrayPath = modification.propertyPath[..^".Array.size".Length];
+
+                // NOTE:
+                // modification.target points to the prefab source object,
+                // so reading its array gives the prefab-side size.
+                // The overridden instance size is stored in modification.value.
+                var prefabProp = new SerializedObject(modification.target).FindProperty(arrayPath);
+
+                if (prefabProp == null)
+                {
+                    continue;
+                }
+
+                var prefabSize = prefabProp.arraySize;
+
+                if (!int.TryParse(modification.value, out var instanceSize) || instanceSize <= prefabSize)
+                {
+                    continue;
+                }
+
+                for (var i = prefabSize; i < instanceSize; i++)
+                {
+                    var bindingPath = $"{arrayPath}.Array.data[{i}]";
+
+                    root.Query<PropertyField>()
+                        .Where(field => field.bindingPath == bindingPath)
+                        .ForEach(field =>
+                        {
+                            ApplyColor(field, isOverride: true);
+
+                            if (!field.ClassListContains(ColoredMarker))
+                            {
+                                field.AddToClassList(ColoredMarker);
+                            }
+                        });
+                }
+            }
+        }
     }
 
     private static bool IsActiveOverrideMarker(VisualElement element)
@@ -104,7 +165,8 @@ public static class OverridePropertyHighlighter
         var field = element;
 
         while (field != null && !field.GetClasses().Any(classes => classes.Contains("unity-base-field")
-                                                                || classes.Contains("unity-property-field")))
+                                                                || classes.Contains("unity-property-field")
+                                                                || classes.Contains("unity-list-view__item")))
         {
             field = field.parent;
         }

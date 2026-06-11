@@ -450,7 +450,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4042046681468142993, guid: eb83196583de60246a4d731bac8b7a13, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0.23
       objectReference: {fileID: 0}
     - target: {fileID: 4042046681468142993, guid: eb83196583de60246a4d731bac8b7a13, type: 3}
       propertyPath: m_LocalPosition.y
@@ -502,7 +502,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4686058959577614409, guid: eb83196583de60246a4d731bac8b7a13, type: 3}
       propertyPath: sampleList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686058959577614409, guid: eb83196583de60246a4d731bac8b7a13, type: 3}
+      propertyPath: 'sampleList.Array.data[0]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686058959577614409, guid: eb83196583de60246a4d731bac8b7a13, type: 3}
+      propertyPath: 'sampleList.Array.data[1]'
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686058959577614409, guid: eb83196583de60246a4d731bac8b7a13, type: 3}
+      propertyPath: 'sampleList.Array.data[2]'
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4686058959577614409, guid: eb83196583de60246a4d731bac8b7a13, type: 3}
       propertyPath: sampleSubClass.sampleInt
@@ -513,8 +525,52 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4686058959577614409, guid: eb83196583de60246a4d731bac8b7a13, type: 3}
-      propertyPath: sampleSubClass.sampleList.Array.size
+      propertyPath: sampleCurve.m_Curve.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686058959577614409, guid: eb83196583de60246a4d731bac8b7a13, type: 3}
+      propertyPath: sampleSubClass.sampleList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686058959577614409, guid: eb83196583de60246a4d731bac8b7a13, type: 3}
+      propertyPath: sampleCurve.m_Curve.Array.data[1].time
+      value: 1.3027649
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686058959577614409, guid: eb83196583de60246a4d731bac8b7a13, type: 3}
+      propertyPath: sampleCurve.m_Curve.Array.data[1].value
+      value: 0.6936493
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686058959577614409, guid: eb83196583de60246a4d731bac8b7a13, type: 3}
+      propertyPath: sampleCurve.m_Curve.Array.data[0].inSlope
+      value: 0.53244394
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686058959577614409, guid: eb83196583de60246a4d731bac8b7a13, type: 3}
+      propertyPath: sampleCurve.m_Curve.Array.data[1].inSlope
+      value: 0.53244394
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686058959577614409, guid: eb83196583de60246a4d731bac8b7a13, type: 3}
+      propertyPath: sampleCurve.m_Curve.Array.data[0].outSlope
+      value: 0.53244394
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686058959577614409, guid: eb83196583de60246a4d731bac8b7a13, type: 3}
+      propertyPath: sampleCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686058959577614409, guid: eb83196583de60246a4d731bac8b7a13, type: 3}
+      propertyPath: sampleCurve.m_Curve.Array.data[1].outSlope
+      value: 0.53244394
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686058959577614409, guid: eb83196583de60246a4d731bac8b7a13, type: 3}
+      propertyPath: sampleCurve.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686058959577614409, guid: eb83196583de60246a4d731bac8b7a13, type: 3}
+      propertyPath: sampleCurve.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686058959577614409, guid: eb83196583de60246a4d731bac8b7a13, type: 3}
+      propertyPath: sampleCurve.m_Curve.Array.data[1].tangentMode
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 4686058959577614409, guid: eb83196583de60246a4d731bac8b7a13, type: 3}
       propertyPath: sampleEvent.m_PersistentCalls.m_Calls.Array.size
