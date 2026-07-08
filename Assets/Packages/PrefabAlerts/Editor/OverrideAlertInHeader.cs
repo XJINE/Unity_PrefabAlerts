@@ -14,6 +14,7 @@ public static class OverrideAlertInHeader
         Editor.finishedDefaultHeaderGUI     += OnFinishedDefaultHeaderGUI;
         EditorApplication.hierarchyChanged  += Cache.Clear;
         PrefabUtility.prefabInstanceUpdated += _ => Cache.Clear();
+        OverrideAlertSettings.Changed       += Cache.Clear;
     }
 
     private static void OnFinishedDefaultHeaderGUI(Editor editor)

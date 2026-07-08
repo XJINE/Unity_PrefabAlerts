@@ -15,7 +15,7 @@ public static class OverridePropertyHighlighter
     {
         Selection.selectionChanged    += OnSelectionChanged;
         OverrideAlertSettings.Changed += OnSelectionChanged; // Re-highlight when colors change.
-        OnSelectionChanged(); // Needs to call when Editor is opened.
+        OnSelectionChanged();                                // Needs to call when Editor is opened.
     }
 
     private static void OnSelectionChanged()

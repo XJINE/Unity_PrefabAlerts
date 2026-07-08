@@ -14,6 +14,7 @@ public static class OverrideAlertInHierarchy
         EditorApplication.hierarchyWindowItemByEntityIdOnGUI += OnHierarchyGUI;
         EditorApplication.hierarchyChanged                   += Cache.Clear;
         PrefabUtility.prefabInstanceUpdated                  += _ => Cache.Clear();
+        OverrideAlertSettings.Changed                        += Cache.Clear;
     }
 
     private static void OnHierarchyGUI(EntityId entityId, Rect selectionRect)

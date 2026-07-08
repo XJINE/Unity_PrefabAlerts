@@ -19,12 +19,17 @@ internal static class OverrideAlertUtility
         // Check for any overridden properties
         foreach (var objectOverride in PrefabUtility.GetObjectOverrides(root, includeDefaultOverrides: false))
         {
-            if (objectOverride.instanceObject == gameObject)
+            var instanceObject = objectOverride.instanceObject;
+
+            var belongsToThis = instanceObject == gameObject
+                             || (instanceObject is Component component && component.gameObject == gameObject);
+
+            if (!belongsToThis)
             {
-                return true;
+                continue;
             }
 
-            if (objectOverride.instanceObject is Component component && component.gameObject == gameObject)
+            if (HasNonIgnoredOverride(instanceObject))
             {
                 return true;
             }
@@ -48,21 +53,23 @@ internal static class OverrideAlertUtility
             }
         }
 
-        // Check for any added child GameObjects
-        foreach (var added in PrefabUtility.GetAddedGameObjects(root))
+        return false;
+    }
+
+    private static bool HasNonIgnoredOverride(Object instanceObject)
+    {
+        if (instanceObject == null)
         {
-            if (added.instanceGameObject != null
-　           && added.instanceGameObject.transform.parent != null
-  　         && added.instanceGameObject.transform.parent.gameObject == gameObject)
-            {
-                return true;
-            }
+            return false;
         }
 
-        // Check for any removed child GameObjects
-        foreach (var removed in PrefabUtility.GetRemovedGameObjects(root))
+        using var serializedObject = new SerializedObject(instanceObject);
+
+        var iterator = serializedObject.GetIterator();
+
+        while (iterator.Next(enterChildren: true))
         {
-            if (removed.parentOfRemovedGameObjectInInstance == gameObject)
+            if (iterator.prefabOverride && !OverrideAlertSettings.IsIgnoredProperty(iterator.propertyPath))
             {
                 return true;
             }
