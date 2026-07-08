@@ -9,7 +9,7 @@ public class Sample : MonoBehaviour
     {
         public int         sampleInt;
         public UnityEvent  sampleEvent;
-        public List<int>   sampleList;        
+        public List<int>   sampleList;
     }
 
     public GameObject     sampleObject;

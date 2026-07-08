@@ -53,6 +53,26 @@ internal static class OverrideAlertUtility
             }
         }
 
+        // Check for any added child GameObjects
+        foreach (var added in PrefabUtility.GetAddedGameObjects(root))
+        {
+            if (added.instanceGameObject != null
+             && added.instanceGameObject.transform.parent != null
+             && added.instanceGameObject.transform.parent.gameObject == gameObject)
+            {
+                return true;
+            }
+        }
+
+        // Check for any removed child GameObjects
+        foreach (var removed in PrefabUtility.GetRemovedGameObjects(root))
+        {
+            if (removed.parentOfRemovedGameObjectInInstance == gameObject)
+            {
+                return true;
+            }
+        }
+
         return false;
     }
 
